@@ -26,6 +26,12 @@ spec:
           value: "mongodb://mongodb-service:27017/assistante-dermatologue"
         ports:
         - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /management/health
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 10
 ---
 apiVersion: v1
 kind: Service
@@ -39,6 +45,7 @@ spec:
     port: 8080
     targetPort: 8080
   type: NodePort
+
 ---
 apiVersion: apps/v1
 kind: Deployment
