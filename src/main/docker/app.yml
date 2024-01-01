@@ -32,9 +32,9 @@ services:
       - mynetwork
 
   mymodel:
-    image: model-dermatologistvf:latest
+    image: elbahjacharafeddine/myflaskapp:latest
     ports:
-      - "8081:8081"
+      - "5000:5000"
     networks:
       - mynetwork
 
